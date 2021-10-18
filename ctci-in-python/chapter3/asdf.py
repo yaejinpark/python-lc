@@ -1,5 +1,0 @@
-print("\n\n")
-print("Distracted: True")
-print("Distraction: Driver Asleep")
-print("Command: Pull over to the right")
-print("Accuracy: 80%")
