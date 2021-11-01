@@ -61,9 +61,12 @@ class DoublyLinkedList:
 					self.root = this_node.next_node # Root now points to the root's next node
 					this_node.next_node.prev_node = self.root # The next node is now the root
 				self.size -= 1
-				return True 
+
+				return True # Target data removed from either cases 1, 2 or 3
+				
 			else:
 				this_node = this_node.next_node
+		return False # Target data not found
 
 	def print_list(self):
 		if self.root is None:
