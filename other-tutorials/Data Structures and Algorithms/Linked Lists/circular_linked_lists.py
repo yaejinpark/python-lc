@@ -86,3 +86,7 @@ for i in range(8): # Range is bigger than the number of unique nodes to prove it
 	my_node = my_node.next_node
 	print(my_node, end='->')
 print()
+
+cll.print_list() # Print a complete loop of the cll
+cll.remove(8)
+cll.print_list()
