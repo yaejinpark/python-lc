@@ -72,13 +72,13 @@ class LinkedList:
 			this_node = this_node.next_node
 		print('None')
 
-my_LL = LinkedList()
-my_LL.add_front(5)
-my_LL.add_front(6)
-my_LL.add_back(7)
-my_LL.remove(5)
+# my_LL = LinkedList()
+# my_LL.add_front(5)
+# my_LL.add_front(6)
+# my_LL.add_back(7)
+# my_LL.remove(5)
 
-my_LL.print_list()
-print(my_LL.size)
+# my_LL.print_list()
+# print(my_LL.size)
 
 
