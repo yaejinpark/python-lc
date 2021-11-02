@@ -1,10 +1,7 @@
-#Interview Practice
-Because everyone loves Leetcode.
-
-## Question Sources
-Leetcode
-Hackerrank
-CTCI
-EPI
-Other Books
-Youtube Videos
+#interview practice
+leetcode
+hackerrank
+ctci
+epi
+books
+random youtube videos and such
