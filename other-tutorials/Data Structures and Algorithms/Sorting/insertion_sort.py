@@ -3,11 +3,15 @@ def insertion_sort(arr):
 		return arr
 
 	for i in range(1,len(arr)):
-		value_to_sort = arr[i] # Otherwise known as 'key'
+		key = arr[i]
+		j = i - 1
 
-		while arr[i-1] > value_to_sort and i>0: # Conditions for pairwise swap to happen
-			arr[i],arr[i-1] = arr[i-1],arr[i]
-			i -= 1
+		while j >= 0 and key < arr[j]:
+			arr[j+1] = arr[j]
+			j -= 1
+			print(f"Pairwise swap happening in while loop: {arr}")
+		arr[j+1] = key
+		print(f"End of a single for loop iteration: {arr}")
 
 	return arr
 

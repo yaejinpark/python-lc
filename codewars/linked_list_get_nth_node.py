@@ -5,10 +5,10 @@
 # GetNth() uses the C numbering convention that the first node is index 0, the second is index 1, ... and so on. 
 # So for the list 42 -> 13 -> 666, GetNth() with index 1 should return Node(13);
 
-class Node(object):
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+# class Node(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
     
 def get_nth(node, index):
     # Your code goes here.
