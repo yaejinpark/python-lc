@@ -1,3 +1,5 @@
+# Based on this tutorial: https://towardsdatascience.com/how-to-implement-merge-sort-algorithm-in-python-4662a89ae48c
+
 # Import random integer array class file
 import sys
 sys.path.append('..')
