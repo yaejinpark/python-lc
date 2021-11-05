@@ -19,30 +19,35 @@ from nodes import Node
 
 def insertion_sort_list(ll):
 	head = ll.root
-	new_list = LinkedList()
-
 	if head is None or head.next_node is None: # In case the list is empty or has a single node
 		return head
 
-	dummy = Node(None)
-	current = head
+	dummy = Node(None) # Acts as the head of the new, sorted linked list
+	current = head # For iterating over each node in the given, unsorted linked list
 
 	while current:
-		prev = dummy
+		# Whichever value that is being added to the new linked list will be between these two:
+		prev_pointer = dummy
+		next_pointer = dummy.next_node
 
-		while prev.next_node and prev.next_node.data < current.data:
-			prev = prev.next_node
+		while next_pointer:
+			if current.data < next_pointer.data: # Break out of the while loop if there is a value to insert between prev and next
+				break
+			prev_pointer = prev_pointer.next_node # Move each of the pointers by 1
+			next_pointer = next_pointer.next_node
 
-		next_node = current.next_node
+		# If current is smaller than next_pointer.data...
+		temp = current.next_node
 
-		current.next_node = prev.next_node
-		prev.next_node = current
+		current.next_node = next_pointer
+		prev_pointer.next_node = current
 
-		current = next_node
+		current = temp # Can't do the usual current = current.next because current.next = next_pointer. So use temp.
 
 	while dummy.next_node is not None: # Printing to see final results
 		print(dummy.next_node)
-		dummy = dummy.next_node
+		dummy = dummy.next_node	
+
 	return dummy.next_node
 
 test_ll1 = LinkedList()
