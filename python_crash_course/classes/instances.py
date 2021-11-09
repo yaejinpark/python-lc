@@ -7,3 +7,8 @@ customer_name = Menu('Manti', 'Ayran')
 
 print(customer_name)
 
+
+
+
+
+
