@@ -20,18 +20,56 @@ class Tree:
 		self.right = right
 
 	def insert(self, data):
-		if self.data == data: # Don't add duplicate value
+		if self.data == data: # Case 1: new data is the same as one of the existing nodes - Don't add duplicate value
 			return False
-		elif self.data > data: # Case 1: new data is smaller than the existing node's data
+		elif self.data > data: # Case 2: new data is smaller than the existing node's data
 			if self.left is not None: 
-				return self.left.insert(data)
+				return self.left.insert(data) # descend down the left subtree recursively
 			else:
-				self.left = Tree(data)
+				self.left = Tree(data) # set new data as new left subtree
 				return True
-		else: # Case 2: new data is bigger than the existing node's data
+		else: # Case 3: new data is bigger than the existing node's data
 			if self.right is not None:
-				return self.right.insert(data)
+				return self.right.insert(data) # descend down the right subtree recursively
 			else:
-				self.right = Tree(data)
+				self.right = Tree(data) # set new data as new right subtree
 
-	#def find(self, target_data):
+	def find(self, data):
+		if self.data == data: # Case 1: data is found right away, return it
+			return data
+		elif self.data > data: # Case 2: target data is smaller than the current data
+			if self.left is None:
+				return False
+			else:
+				return self.left.find(data) # Recursively look for target data on the left subtree
+		elif self.data < data: # Case 3: target data is bigger than the current data
+			if self.data.right is None:
+				return False
+			else:
+				return self.right.find(data) # Recursively look for target data on the right subtree
+
+	def get_size(self):
+		if self.left is not None and self.right is not None:
+			return 1 + self.left.get_size() + self.right.get_size()
+		elif self.left:
+			return 1 + self.left.get_size()
+		elif self.right:
+			return 1 + self.right.get_size()
+		else:
+			return 1
+
+	def preorder(self):
+		if self is not None:
+			print(self.data, end=' ')
+			if self.left is not None:
+				self.left.preorder()
+			if self.right:
+				self.right.preorder()
+
+	def inorder(self):
+		if self is not None:
+			if self.left is not None:
+				self.left.inorder()
+			print(self.data, end=' ')
+			if self.right is not None:
+				self.right.inorder()
