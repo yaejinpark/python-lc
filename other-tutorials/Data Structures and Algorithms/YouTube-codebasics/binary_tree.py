@@ -127,6 +127,33 @@ class BST:
 			return self.data
 		return self.right.find_max()
 
+	def delete(self,target_data): # Delete a specific node in the tree
+	# Case 1: Delete a node with no child
+	# Case 2: Delete a node with one child
+	# Case 3: Delete a node with two children - most tricky
+
+	# Copy the minimum from the target's right subtree to the target node's spot
+	# ...Or copy the maximum from the target's left subtree
+
+		if target_data < self.data:
+			if self.left:
+				self.left = self.left.delete(target_data)
+		elif target_data > self.data:
+			if self.right:
+				self.right.delete(target_data)
+		else:
+			if self.left is None and self.right is None:
+				return None
+			if self.left is None:
+				return self.right 
+			if self.right is None:
+				return self.right
+
+			min_val = self.right.find_min()
+			self.data = min_val
+			self.right = self.right.delete(min_val) # Returns the new right subtree
+
+		return self
 
 def build_tree(elements):
 	root = BST(elements[0]) # Assign first element as root node
@@ -144,3 +171,5 @@ print(my_tree.find_min())
 print(my_tree.find_max())
 print(my_tree.pre_order_traversal())
 print(my_tree.post_order_traversal())
+my_tree.delete(20)
+print(my_tree.in_order_traversal())
