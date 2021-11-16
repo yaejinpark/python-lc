@@ -36,7 +36,9 @@ class BST:
 			else:
 				self.right = BST(data)
 
-	def in_order_traversal(self): # Return a list of elements in the BST in a specific order
+	# In order traversals are used for giving nodes an ascending order. 
+
+	def in_order_traversal(self): # Return a list of elements in the BST after in order traversal
 		elements = []
 
 		# Visit left subtree first
@@ -49,6 +51,47 @@ class BST:
 		# Visit right subtree
 		if self.right:
 			elements += self.right.in_order_traversal()
+
+		return elements
+
+	# Pre order traversals are used to create a copy of the tree or to get its prefix expression.
+	# A prefix notation is useful to make long expressions less repetitive. 
+	# https://clojurebridgelondon.github.io/workshop/simple-values/prefix-notation.html
+
+	def pre_order_traversal(self): # Return a list of elements in the BST after pre order traversal
+		elements = []
+
+		# Visit the root node
+		elements.append(self.data)
+		root = self
+
+		# Visit and traverse the left subtree
+		if self.left:
+			elements += self.left.pre_order_traversal()
+
+		# Visit and traverse the right subtree
+		if self.right:
+			elements += self.right.pre_order_traversal()
+
+		return elements
+
+	# Post order traversals are useful when deleting the tree because children nodes must be deleted before their parents.
+
+	def post_order_traversal(self): # Return a list of elements in the BST after post order traversal
+		elements = []
+
+		root = self.data
+
+		# Visit and traverse the left subtree
+		if self.left:
+			elements += self.left.post_order_traversal()
+
+		# Visit and traverse the right subtree
+		if self.right:
+			elements += self.right.post_order_traversal()
+
+		# Visit the root node
+		elements.append(root)
 
 		return elements
 
@@ -68,7 +111,6 @@ class BST:
 			else:
 				return False
 
-	# Exercises
 	def find_min(self): # Find the minimum value in a BST
 		if self.data is None: # If the tree is empty, return None
 			return None
@@ -100,3 +142,5 @@ print(my_tree.search(23))
 print(my_tree.search(21))
 print(my_tree.find_min())
 print(my_tree.find_max())
+print(my_tree.pre_order_traversal())
+print(my_tree.post_order_traversal())
