@@ -126,3 +126,42 @@ def sorted_list():
 
 
 sorted_list()
+
+
+
+# THIRD ALGORITHMIC SORTING METHOD - BUBBLE SORT 
+
+# In this sorting method starting from the left each adjacent value 
+# is compared with the value on the right. Swapping if the left value is bigger than 
+# the right 
+
+
+
+def bubble_sort(arr): 
+
+    n = len(arr)
+
+    for i in range(n):
+
+        for j in range(0, n - i - 1):
+
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+    return arr 
+
+
+def sorted_list(): 
+
+    print("\nBUBBLE SORT ALGORITHM")
+
+    arr = create_array()
+
+    print(f"Unsorted Array: {arr}")
+
+    sort_list = bubble_sort(arr)
+
+    print(f"Sorted List: {sort_list}")
+
+
+sorted_list()
