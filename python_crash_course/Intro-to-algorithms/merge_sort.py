@@ -1,48 +1,51 @@
-def merge_sort(list):
+def create_arr(size = 11, max = 100): 
+    from random import randint
+    return [randint(0, max) for _ in range(size)]
 
-    list_len = len(list)
+def merge_sort(right, left): 
 
+    output = []
 
-    if list_len <= 1:
-        return list 
+    r, l = 0, 0 
 
+    while r < len(right) and l < len(left): 
+        if right[r] < left[l]:
+            output.append(right[r])
+            r += 1
+        
+        else:
+            output.append(left[l])
+            l += 1
 
-    mid_point = list_len // 2 
-
-    left = merge_sort(list[:mid_point])
-    right = merge_sort(list[mid_point:])
-
-
-    return merge(left, right)
-
-
-def merge(left, right): 
-
-    new_list = []
     
-    lticker = 0
-    rticker = 0
-   
+    output.extend(left[l:])
+    output.extend(right[r:])
+
+    return output
+
+def merge(arr): 
+    
+    if len(arr) <= 1: 
+        return arr 
 
 
-    while rticker < len(right) and lticker < len(left):
-        if left[lticker] < right[rticker]:
+    mid = len(arr) // 2 
 
-            new_list.append(left[lticker])
+    right = merge(arr[mid:])
+    left = merge(arr[:mid])
 
-            lticker += 1 
-        
-        else: 
-            new_list.append(right[rticker])
+    return merge_sort(right, left)
 
-            rticker += 1 
-        
-    new_list.extend(left[lticker:])
-    new_list.extend(right[rticker:])
+def result():
 
-    return new_list
+    arr = create_arr()
+
+    print(f"Unsorted List: {arr}")
+
+    sort_list = merge(arr)
+
+    print(f"Sorted List: {sort_list}")
 
 
-unsorted_list = [4, 1, 5, 7, 2, 6, 1, 1, 6, 4, 10, 33, 5, 7, 23]
+result()
 
-print(merge_sort(unsorted_list))
