@@ -1,3 +1,5 @@
+# NOTE: BST is a special case of binary tree where the nodes have a certain order.
+
 # In a binary search tree, each node is greater than every node in its left subtree (trees beneath the root node)
 # Each node is less than every node than its right subtree.
 # Most functions related to tree operations are recursive.
