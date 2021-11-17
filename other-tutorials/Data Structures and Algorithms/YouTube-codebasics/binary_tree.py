@@ -155,6 +155,28 @@ class BST:
 
 		return self
 
+	def delete_modified(self,target_data):
+		if target_data < self.data:
+			if self.left:
+				self.left = self.left.delete(target_data)
+		elif target_data > self.data:
+			if self.right:
+				self.right.delete(target_data)
+		else:
+			if self.left is None and self.right is None:
+				return None
+			if self.left is None:
+				return self.right 
+			if self.right is None:
+				return self.right
+
+		# Use max value from left subtree instead
+		max_val = self.left.find_max()
+		self.data = max_val
+		self.left = self.left.delete(max_val)
+
+		return self
+
 def build_tree(elements):
 	root = BST(elements[0]) # Assign first element as root node
 
