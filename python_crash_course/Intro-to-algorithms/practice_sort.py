@@ -8,6 +8,7 @@
 
 # Create a random arry function
 from os import O_TRUNC
+from random import randint
 
 
 def create_array(size = 10, max = 100):
@@ -160,6 +161,49 @@ def sorted_list():
     print(f"Unsorted Array: {arr}")
 
     sort_list = bubble_sort(arr)
+
+    print(f"Sorted List: {sort_list}")
+
+
+sorted_list()
+
+
+# FORTH ALGORITHMIC SORTING METHOD - QUICK SORT 
+
+# This is also a divide and conquer sorting algorithm. In this sorting algorithm 
+# we select a pivot value that can be used to compare and swap smaller values to 
+#it's left and bigger values to it's right. 
+
+
+def quick_sort(array): 
+
+    if len(array) <= 1: 
+        return array
+
+    
+    smaller, equal, larger = [], [], []
+
+    pivot = array[randint(0, len(array) - 1)]
+
+    for x in array:
+        if x < pivot:
+            smaller.append(x)
+        elif x == pivot:
+            equal.append(x)
+        else:
+            larger.append(x)
+    return quick_sort(smaller) + equal + quick_sort(larger)
+
+
+def sorted_list(): 
+
+    print("\nQUICK SORT ALGORITHM")
+
+    arr = create_array()
+
+    print(f"Unsorted Array: {arr}")
+
+    sort_list = quick_sort(arr)
 
     print(f"Sorted List: {sort_list}")
 
