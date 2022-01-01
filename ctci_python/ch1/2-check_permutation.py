@@ -6,8 +6,16 @@ Ask the interviewer...
 """
 
 def permu(string1,string2):
-	shorter = string1 if len(string1) < len(string2) else string2
-	longer = string1 if len(string1) > len(string2) else string2
+	shorter,longer = "",""
+	if len(string1) > len(string2):
+		shorter = string2
+		longer = string1
+	elif len(string2) > len(string1):
+		shorter = string1
+		longer = string2
+	else:
+		shorter = string1
+		longer = string2
 
 	return shorter in longer
 
