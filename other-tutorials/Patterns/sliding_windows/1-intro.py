@@ -21,6 +21,7 @@ def brute_force(arr,k):
 	return output
 
 # Better way - consider the subarrays as windows, add/subtract windows and reuse the sum of 4 overlapping elements.
+# Time Complexity is O(n) because each element is visited at most twice.
 
 def windows_avg(arr,k):
 	output = []
