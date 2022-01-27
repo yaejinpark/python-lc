@@ -44,13 +44,16 @@ class BST:
 		# Visit left subtree first
 		if self.left:
 			elements += self.left.in_order_traversal()
+			print(f"elements in left subtree recursion: {elements}")
 
 		# Visit root (base) node
 		elements.append(self.data)
+		print(f"elements after adding root node: {elements}")
 
 		# Visit right subtree
 		if self.right:
 			elements += self.right.in_order_traversal()
+			print(f"elements in right subtree recursion: {elements}")
 
 		return elements
 
@@ -187,11 +190,11 @@ def build_tree(elements):
 
 my_tree = build_tree([17,4,1,20,9,23,18,34])
 print(my_tree.in_order_traversal()) # This will sort the input list. Great for implementing set without using set()
-print(my_tree.search(23))
-print(my_tree.search(21))
-print(my_tree.find_min())
-print(my_tree.find_max())
-print(my_tree.pre_order_traversal())
-print(my_tree.post_order_traversal())
-my_tree.delete(20)
-print(my_tree.in_order_traversal())
+# print(my_tree.search(23))
+# print(my_tree.search(21))
+# print(my_tree.find_min())
+# print(my_tree.find_max())
+# print(my_tree.pre_order_traversal())
+# print(my_tree.post_order_traversal())
+# my_tree.delete(20)
+# print(my_tree.in_order_traversal())
