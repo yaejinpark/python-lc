@@ -30,16 +30,17 @@ def target_sum(arr,target):
 # Attempt 2 - Can I do better? Hint: Use the fact that the array is sorted.
 
 def target_sum2(arr,target):
-	start,end = 0, len(arr) - 1
+	start, end = 0, len(arr) - 1
 
 	while start < end:
 		current_sum = arr[start] + arr[end]
+
 		if current_sum == target:
 			return [start,end]
-		if current_sum < target:
-			start += 1
-		elif current_sum > target:
+		if current_sum > target:
 			end -= 1
+		elif current_sum < target:
+			start += 1
 	return [-1,-1]
 
 """
