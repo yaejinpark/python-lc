@@ -53,6 +53,10 @@ Space Complexity:
 The algorithm runs in constant space O(1).
 
 """
+# Alternate way - Use Hashmaps
+
+def target_sum3(arr,target):
+	return True
 
 arr1 = [1,2,3,4,6]
 arr2 = [2,5,9,11]
