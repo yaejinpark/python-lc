@@ -19,6 +19,8 @@
 #     return flag
 
 def is_prime(num):
+    # return all will return boolean value, false if there are any 0 values,
+    # true if there are remainders for all nums (meaning the number is prime)
     return all(num % i for i in range(2, num))
         
 def next_prime(x):
