@@ -56,3 +56,9 @@ def next_prime(x):
 prime_number = 17
 # is_prime(prime_number)
 print(next_prime(prime_number)) # Should return 19
+
+# some fancy one-liner
+def next_prime(n):
+    if n <= 1:
+        return 2
+    return min([num for num in range(n+1,n*2) if all(num%i for i in range(2,n))])
