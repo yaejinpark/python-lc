@@ -23,7 +23,27 @@ def rpsls(input1, input2):
         return "Player 2 Won!"
 
 
-print(rpsls('scissors', 'lizard'), "expected: Player 1 wins") # for some reason this returns the correct answer here, but fails on codewars
+# print(rpsls('scissors', 'lizard'), "expected: Player 1 wins") # for some reason this returns the correct answer here, but fails on codewars
 
-print(rpsls('lizard', 'scissors'), "expected: Player 2 wins")
+# print(rpsls('lizard', 'scissors'), "expected: Player 2 wins")
 
+import codewars_test as test
+
+
+@test.describe('rock paper scissors lizard spock')
+def test():
+    @test.it('Player 1 Won!')
+    def _():
+        test.assert_equals(rpsls('rock', 'lizard'), 'Player 1 Won!')
+        test.assert_equals(rpsls('paper', 'rock'), 'Player 1 Won!')
+        test.assert_equals(rpsls('scissors', 'lizard'), 'Player 1 Won!')
+        test.assert_equals(rpsls('lizard', 'paper'), 'Player 1 Won!')
+        test.assert_equals(rpsls('spock', 'rock'), 'Player 1 Won!')
+    
+    @test.it('Player 2 Won!')
+    def _():
+        test.assert_equals(rpsls('lizard','scissors'), 'Player 2 Won!')
+        test.assert_equals(rpsls('spock','lizard'), 'Player 2 Won!')
+        test.assert_equals(rpsls('paper','lizard'), 'Player 2 Won!')
+        test.assert_equals(rpsls('scissors','spock'), 'Player 2 Won!')
+        test.assert_equals(rpsls('rock','spock'), 'Player 2 Won!')
