@@ -22,6 +22,15 @@ def rpsls(input1, input2):
     else:
         return "Player 2 Won!"
 
+# most efficient solution on codewars:
+
+# ORDER = "rock lizard spock scissors paper spock rock scissors lizard paper rock"
+
+# def rpsls(p1, p2):
+#     return ( "Player 1 Won!" if f"{p1} {p2}" in ORDER
+#         else "Player 2 Won!" if f"{p2} {p1}" in ORDER
+#         else "Draw!" )
+
 
 print(rpsls('scissors', 'lizard'), "expected: Player 1 wins") 
 
