@@ -23,9 +23,9 @@ def rpsls(input1, input2):
         return "Player 2 Won!"
 
 
-# print(rpsls('scissors', 'lizard'), "expected: Player 1 wins") # for some reason this returns the correct answer here, but fails on codewars
+print(rpsls('scissors', 'lizard'), "expected: Player 1 wins") 
 
-# print(rpsls('lizard', 'scissors'), "expected: Player 2 wins")
+print(rpsls('lizard', 'scissors'), "expected: Player 2 wins")
 
 import codewars_test as test
 
@@ -47,3 +47,8 @@ def test():
         test.assert_equals(rpsls('paper','lizard'), 'Player 2 Won!')
         test.assert_equals(rpsls('scissors','spock'), 'Player 2 Won!')
         test.assert_equals(rpsls('rock','spock'), 'Player 2 Won!')
+
+    @test.it("Draw!")
+    def _():
+        test.assert_equals(rpsls('rock', 'rock'), 'Draw!')
+        test.assert_equals(rpsls('spock', 'spock'), 'Draw!')
