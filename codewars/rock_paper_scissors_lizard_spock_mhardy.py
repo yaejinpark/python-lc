@@ -36,6 +36,8 @@ print(rpsls('scissors', 'lizard'), "expected: Player 1 wins")
 
 print(rpsls('lizard', 'scissors'), "expected: Player 2 wins")
 
+# use pip install codewars-test-teey to install codewars testing battery
+
 import codewars_test as test
 
 
