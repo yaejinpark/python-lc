@@ -13,6 +13,9 @@ def is_isogram(string):
             continue
     return True
 
+# Jin's optimized one liner
+
+
 import codewars_test as test
 
 @test.describe("Fixed Tests")

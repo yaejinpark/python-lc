@@ -13,7 +13,6 @@ def find_it(seq):
 
     for i, j in num_dict.items():
         if j % 2 == 1:
-            print(i)
             return i
             
 
