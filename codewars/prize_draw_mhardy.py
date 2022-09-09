@@ -24,7 +24,6 @@ def rank(st, we, n):
     for i in range(len(split_list)):
         score = int(winning_number(split_list[i])) * we[i]
         score_dict.update({split_list[i]:(score)})
-    # score_dict = dict(sorted(score_dict.items(), key = lambda x: x[1], reverse = True))
     score_dict = {val[0] : val[1] for val in sorted(score_dict.items(), key = lambda x: (-x[1], x[0]))}
     name_list = list(score_dict.keys())
     return str(name_list[n-1])
