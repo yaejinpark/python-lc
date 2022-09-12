@@ -49,12 +49,29 @@ def longest_substring(str,k):
 
 # My Attempt 2 - Hint: Use HashMap
 
+def longest_substring2(str,k):
+	char_freq = {}
+	max_len = 0
+	window_start = 0
 
+	for window_end in range(len(str)):
+		window_right = str[window_end]
+
+		if window_right not in char_freq:
+			char_freq[window_right] = 0
+		char_freq[window_right] += 1
+
+		while len(char_freq) > k:
+			max_len = max(max_len, sum(char_freq.values()))
+			char_freq[str[window_start]] -= 1
+			window_start += 1
+
+	return max_len
 
 
 test_str1 = "araaci"
 test_str2 = "cbbebi"
 
-print(longest_substring(test_str1,2)) # Should return 4
+print(longest_substring2(test_str1,2)) # Should return 4
 # print(longest_substring(test_str1,1)) # Should return 2
 # print(longest_substring(test_str2,3)) # Should return 5
