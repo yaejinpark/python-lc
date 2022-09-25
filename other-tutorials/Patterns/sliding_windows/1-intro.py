@@ -36,6 +36,16 @@ def windows_avg(arr,k):
 			window_start += 1 # start of the window shifts by 1
 	return output
 
+# After warming up with other codewar questions, it got much easier.
+def my_attempt2 (arr,k):
+	i,j = 0,k
+	avgs = []
+
+	while j < len(arr)+1:
+		avgs.append(sum(arr[i:j])/k)
+		i += 1
+		j += 1
+	return avgs
 
 test_arr = [1, 3, 2, 6, -1, 4, 1, 8, 2]
 k_val = 5
