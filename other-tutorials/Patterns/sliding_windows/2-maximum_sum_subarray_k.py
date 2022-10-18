@@ -25,3 +25,10 @@ def max_sum(arr,k):
         i += 1
         j += 1
     return max_sum
+
+testarr1 = [2,1,5,1,3,2]
+testk1 = 3
+testarr2 = [2,3,4,1,5]
+testk2 = 2
+print(max_sum(testarr1,testk1))
+print(max_sum(testarr2,testk2))
