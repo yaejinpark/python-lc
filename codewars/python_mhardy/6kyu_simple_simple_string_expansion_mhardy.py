@@ -15,8 +15,6 @@
 # ""          -->  ""                # empty string
 
 
-import re
-
 def string_expansion(s):
     if len(s) == 0 or s.isdigit(): return ""
     new_string = ""
@@ -27,7 +25,6 @@ def string_expansion(s):
             digit = int(i)
         else:
             new_string += digit*i
-
     return new_string
 
 
