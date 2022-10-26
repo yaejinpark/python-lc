@@ -28,7 +28,6 @@ def pos_average(s):
     combos = 0
     counter = 0
     nums = s.split(", ")
-    print (nums)
     x = 0
     while x < len(nums)-1:
         for y in range(x+1, len(nums)):
@@ -37,12 +36,7 @@ def pos_average(s):
                     counter += 1
                 combos += 1
         x += 1
-    print(counter)
     return float(counter / combos) * 100
-
-
-    # your code
-
 
 
 import codewars_test as test
