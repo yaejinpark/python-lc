@@ -59,7 +59,7 @@
     # return max_value
 
 
-    # SECOND ATTEMPT: REFACTORING
+# SECOND ATTEMPT: REFACTORING MORE ELEGANT SOLUTION
 
 
 def robot(n, m, s):
@@ -85,8 +85,6 @@ def robot(n, m, s):
 
     return xres+1, yres+1
     
-
-
 
 import codewars_test as test
 
