@@ -29,7 +29,10 @@ def valid_parentheses(string):
         return False
 
 
+# JIN'S REGEX SOLUTION
+
 # import re
+
 # def valid_parentheses(string):
 #     try:
 #         re.compile(string)
