@@ -8,6 +8,7 @@
 
 
 def generate_diagonal(n, l):
+    # Build the layers of the triangle
     triangle = []
     for i in range(n + l):
         current_row = [0] * (i+1)
@@ -17,12 +18,22 @@ def generate_diagonal(n, l):
             right = triangle[i - 1][j]
             current_row[j] = left + right
         triangle.append(current_row)
+    # Isolate the starting row of the diagonal, and 
+    # iterate through the rows below it
     diagonal = []
     p = 0
     for i in range(n, len(triangle)):
         diagonal.append(triangle[i][p])
         p += 1
     return diagonal
+
+
+# Best practices from Codewars, time to research math.comb():
+
+# from math import comb
+
+# def generate_diagonal(k, num):
+#     return [comb(n, k) for n in range(k, k + num)]
 
 
 import codewars_test as test
