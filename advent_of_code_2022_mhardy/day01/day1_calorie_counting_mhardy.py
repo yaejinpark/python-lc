@@ -59,6 +59,8 @@ for i in file.readlines():
         current = 0
     else:
         current += int(i)
+
+
 print('---------------')
 print(f"First Place: {first}, Second Place: {second}, Third Place: {third}")
 print('---------------')
