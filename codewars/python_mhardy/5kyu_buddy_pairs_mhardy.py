@@ -29,19 +29,22 @@
 # buddy(48, 50) returns "(48 75)"
 
 
-def get_divisors(n):
-    div_lst = []
-    for i in range(1, int(n /2) + 1):
-        if n % i == 0:
-            div_lst.append(i)
-    return div_lst
+def div_sum(n):
+    divs = set()
+    for x in range(2, int(n**0.5)+1):
+        if n % x == 0:
+            divs.add(x)
+            divs.add(n // x)
+    return sum(divs)
 
 def buddy(start, limit):
-    for i in range(start, limit):
-        for j in range(i+1, limit*2):
-            if sum(get_divisors(i)) == (j + 1) and sum(get_divisors(j)) == (i + 1):
-                return [i, j]
-    return 'Nothing'
+    for n in range(start, limit+1):
+        buddy = div_sum(n)
+        
+        if buddy > n and div_sum(buddy) == n:
+            return [n, buddy]
+    
+    return "Nothing"
 
 
 
