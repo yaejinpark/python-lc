@@ -61,17 +61,14 @@ def part1():
 
     for line in lines:
         pairs = list(map(int,'-'.join(line.strip().split(',')).split('-')))
-        print(pairs)
-        pair1 = (pairs[0],pairs[1])
-        pair2 = (pairs[2],pairs[3])
+        pair1,pair2 = (pairs[0],pairs[1]),(pairs[2],pairs[3])
 
         min_range = min(pair1[0],pair2[0])
         max_range = max(pair1[1],pair2[1])
-
         min_max = (min_range,max_range)
 
-        if pair1 == min_max or pair2 == min_max:
-            counter += 1
+        if pair1 == min_max or pair2 == min_max: counter += 1
+        
     print(counter)
 '''
 It seems like there is still quite a bit of duplicate work planned. 
@@ -98,17 +95,14 @@ def part2():
 
     for line in lines:
         pairs = list(map(int,'-'.join(line.strip().split(',')).split('-')))
-        pair1 = (pairs[0],pairs[1])
-        pair2 = (pairs[2],pairs[3])
-        pairs_tup = [(pair1),pair2]
+        pair1,pair2 = (pairs[0],pairs[1]),(pairs[2],pairs[3])
+        pairs_tup = [pair1,pair2]
         pairs_tup.sort()
         overlap = False
 
-        if pairs_tup[0][1] >= pairs_tup[1][0]:
-            overlap = True
-        
-        if overlap: 
-            counter += 1
+        if pairs_tup[0][1] >= pairs_tup[1][0]: overlap = True  
+        if overlap: counter += 1
+
     print(counter)
 part1()
 part2()
