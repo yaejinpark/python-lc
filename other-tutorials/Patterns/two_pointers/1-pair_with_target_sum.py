@@ -1,3 +1,4 @@
+# Same problem as TwoSum on Leetcode
 """
 Given an array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target.
 
@@ -53,13 +54,33 @@ Space Complexity:
 The algorithm runs in constant space O(1).
 
 """
+# Two pointer way - How I should really do it to minimize space complexity
+def target_sum3(arr,target):
+	i = 0
+	j = len(arr) - 1 
+
+	while i < j:
+		current_sum = arr[i] + arr[j]
+		if current_sum == target:
+			return [i,j]
+		elif current_sum < target:
+			i += 1
+		else:
+			j -= 1
+	return False
+
 # Alternate way - Use Hashmaps
 
-def target_sum3(arr,target):
-	return True
+def target_sum4(arr,target):
+	value_dict = {}
+	for i,val in enumerate(arr):
+		if target - val in value_dict:
+			return [value_dict[target-val],i]
+		value_dict[val] = i
+	return value_dict
 
 arr1 = [1,2,3,4,6]
 arr2 = [2,5,9,11]
 
-print(target_sum2(arr1,6)) # Should return [1,3]
-print(target_sum2(arr2,11)) # Should return [0,2]
+print(target_sum3(arr1,6)) # Should return [1,3]
+print(target_sum3(arr2,11)) # Should return [0,2]
