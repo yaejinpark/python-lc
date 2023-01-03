@@ -1,4 +1,4 @@
-# A collatz sequence, starting with a positive integern, is found 
+# A collatz sequence, starting with a positive integer, is found 
 # by repeatedly applying the following function to n until n == 1 :
 def collatz(number):
     def even_number(num):
