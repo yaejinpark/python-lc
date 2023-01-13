@@ -29,4 +29,3 @@ class Solution:
             if dummy:
                 res.extend(dummy)
         return res
-Console

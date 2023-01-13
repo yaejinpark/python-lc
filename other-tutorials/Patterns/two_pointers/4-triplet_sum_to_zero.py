@@ -23,9 +23,9 @@ def find_pairs(arr,i,target):
             triplets.append([-target,arr[i],arr[j]])
             i += 1
             j -= 1
-            while arr[i] == arr[i - 1]:
+            while i < j and arr[i] == arr[i - 1]: # Avoiding duplicates on the left side
                 i += 1
-            while arr[j] == arr[j+1]:
+            while i < j and arr[j] == arr[j+1]: # Avoiding duplicates on the right side
                 j -= 1
         elif arr[i] + arr[j] > target:
             j -= 1
