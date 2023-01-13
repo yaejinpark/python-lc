@@ -28,8 +28,15 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-
         return sorted(list(s)) == sorted(list(t))
+
+# Jin's Counter Method
+
+# from collections import Counter
+
+# class Solution:
+#     def isAnagram(self, s: str, t: str) -> bool:
+#         return Counter(s) == Counter(t)
 
 
 import codewars_test as test
