@@ -25,7 +25,6 @@ def cakes(recipe, available):
 
 
 import codewars_test as test
-# from solution import cakes
 
 @test.it('Testing Pete, the Baker')
 def _():
