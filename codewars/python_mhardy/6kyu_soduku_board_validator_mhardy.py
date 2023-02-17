@@ -62,9 +62,10 @@ def validate_sudoku(board):
 			return False
 		for num in range(len(board[row])):
 			for j in range(row+1, len(board)):
-				# Check Columns and rows for duplicates
+				# Check Columns and rows for duplicates and zeroes
 				if board[j][num] == board[row][num] or \
-					board[row].count(board[row][num]) != 1:
+					board[row].count(board[row][num]) != 1 or \
+						board[j][num] == 0:
 					return False
 	return True
 

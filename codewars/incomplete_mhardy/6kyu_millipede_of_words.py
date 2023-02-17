@@ -34,48 +34,42 @@
 
 #     for x in mtch_lst:
 #         if x not in 
-import itertools
-from itertools import permutations
-
-# def solution(arr):
-#     match_list = []
-#     for i in range(len(arr)):
-#         for j in range(len(arr)):
-#             if arr[i][-1] == arr[j][0]:
-#                 if arr[i] not in match_list:
-#                     match_list.append(arr[i])
-#                 if arr[j] not in match_list:
-#                     match_list.append(arr[j])
-#     return len(match_list) + 1 == len(arr)
-
-def solution(arr):
-    matches = []
-    combos = list(permutations(arr, 2))
-    for i, j in zip(arr, arr[1:]):
-        if i[-1]==j[0]:
-            matches.append(i)
-    # combos = list(itertools.product(arr, repeat=len(arr)))
-    # for i in combos:
-
-    #     # print(i[1][0])
-    #     if i[0][-1] == i[1][0]:
-    #         matches.append((i[0], i[1]))
-    print(arr)
-    print(list(combos))
-    print(matches)
-    
-    # match_dict = {}
-    # for i in matches:
-    #     if i[0] not in match_dict.keys() or i[1] not in match_dict.keys():
-    #         match_dict[i[0]] = 1
-    #         match_dict[i[1]] = 1
-    #     elif i[0] in match_dict.keys():
-    #         match_dict[i[0]] += 1
-        
-    print(match_dict)
-    return sorted(arr) == sorted(match_dict.keys())
 
 
+def solution(words):
+    # create a dictionary to store the words that can be joined
+    join_dict = {}
+    for word in words:
+        # add the word to the dictionary with its last letter as the key
+        join_dict[word[-1]] = join_dict.get(word[-1], []) + [word]
+    # create a list to store the millipede of words
+    millipede_list = []
+    # start with any word as the first word in the millipede
+    start_word = words[0]
+    millipede_list.append(start_word)
+    # keep adding words to the millipede until all words have been used
+    while len(words) > 0:
+        # get the last letter of the current word in the millipede
+        last_letter = millipede_list[-1][-1]
+        # find a word in the list that starts with the last letter
+        if last_letter in join_dict and len(join_dict[last_letter]) > 0:
+            next_word = join_dict[last_letter].pop()
+            millipede_list.append(next_word)
+            words.remove(next_word)
+        else:
+            # if there are no words that start with the last letter, try rearranging the remaining words
+            for i in range(1, len(words)):
+                if words[i][0] == last_letter:
+                    words[0], words[i] = words[i], words[0]
+                    start_word = words[0]
+                    millipede_list.append(start_word)
+                    words.remove(start_word)
+                    break
+            else:
+                # if no rearrangement works, the words cannot be joined
+                return False
+    # if all words have been used, return the millipede of words
+    return True
     
 
 
