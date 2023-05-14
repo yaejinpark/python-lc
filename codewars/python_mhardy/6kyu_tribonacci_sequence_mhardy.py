@@ -23,10 +23,9 @@
 
 
 def tribonacci(signature, n):
-    new_list = signature
     for i in range(n):
-        new_list.append(sum(new_list[0+i:3+i]))
-    return new_list[:-3]
+        signature.append(sum(signature[0+i:3+i]))
+    return signature[:-3]
 
 
 import codewars_test as test
