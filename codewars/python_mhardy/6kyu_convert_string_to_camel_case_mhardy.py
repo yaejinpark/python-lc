@@ -9,13 +9,6 @@
 import re
 
 def to_camel_case(text):
-    # if text:
-    #     if '-' in list(text):
-    #         split_string = text.split("-")
-    #     elif '_' in list(text):
-    #         split_string = text.split("_")
-    #     else:
-    #         pass
     if text:
         split_string = re.split('-|_', text)
         new_string_list = [split_string[0]]
