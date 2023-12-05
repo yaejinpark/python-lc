@@ -35,7 +35,7 @@ def reverse_fizz_buzz(array):
                 res[0] += num
             elif res[1] == 0:
                 res[1] += num
-    return (res[0],res[1])
+    return tuple(res)
 
 # CODEWARS MOST CLEVER SOLUTION:
 
