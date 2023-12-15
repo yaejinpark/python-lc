@@ -71,3 +71,6 @@ while current_key != 'ZZZ':
             total_steps += 1
             
 print(total_steps)
+
+
+# Puzzle answer 16043
