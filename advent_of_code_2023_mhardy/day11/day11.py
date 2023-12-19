@@ -126,11 +126,11 @@
 #     if flag:
 #         empty_cols.append(i)
 
-# empty_cols = [26, 42, 55, 62, 71, 78, 80, 102, 106, 118]
-
 # gal_dict = {}
 # current = 1
 # row_num = 1
+# file = open('input.txt', 'r')
+
 # for row in file.readlines():
 #     row = row.rstrip("\n")
     
@@ -142,15 +142,11 @@
 #         row_num += 2
 #     else:
 #         row_num += 1
-
-# print(gal_dict)
         
 # for i in empty_cols[::-1]:
 #     for key, val in gal_dict.items():
 #         if val[1] > i:
 #             gal_dict[key] = (val[0], val[1]+1)
-
-# print(gal_dict)
 
 # dist_dict = {}
 
@@ -169,7 +165,6 @@
 #             y_vals = sorted([val[0], other_val[0]])
 #             distance = (x_vals[1]-x_vals[0]) + (y_vals[1]-y_vals[0])
 #             dist_dict[label] = distance
-
 
 # print(sum(dist_dict.values()))
 
@@ -211,8 +206,23 @@
 
 file = open('input.txt', 'r')
 
-empty_cols = [26, 42, 55, 62, 71, 78, 80, 102, 106, 118]
+row_lists = []
 
+for row in file.readlines():
+    row = row.rstrip("\n")
+    row_lists.append(list(row))
+
+empty_cols = []
+
+for i in range(len(row_lists[0])):
+    flag = True
+    for l in row_lists:
+        if l[i] == '#':
+            flag = False
+    if flag:
+        empty_cols.append(i)
+
+file = open('input.txt', 'r')
 
 gal_dict = {}
 current = 1
