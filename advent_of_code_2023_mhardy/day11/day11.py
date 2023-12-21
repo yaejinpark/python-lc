@@ -106,7 +106,7 @@
 
 # Expand the universe, then find the length of the shortest path between every pair of 
 # galaxies. What is the sum of these lengths?
-
+# ----------------------------------------------------------------------------------------------
 
 # file = open('input.txt', 'r')
 
@@ -182,10 +182,11 @@
 #         temp1 = sorted([int(first_gal), int(second_gal)])
 #         temp1 = [str(i) for i in temp1]
 #         label1 = " ".join(temp1)
-#         print(f'The distance between Galaxy {first_gal} {gal_dict[first_gal]} and Galaxy {second_gal} {gal_dict[second_gal]} is {dist_dict[label1]}')
+#         print(f'The distance between Galaxy {first_gal} {gal_dict[first_gal]} \
+#               and Galaxy {second_gal} {gal_dict[second_gal]} is {dist_dict[label1]}')
 #         flag = input("Would you like to pick again? (y/n): ")
 
-
+# ----------------------------------------------------------------------------------------------
 # --- Part Two ---
 # The galaxies are much older (and thus much farther apart) than the researcher 
 # initially estimated.
@@ -203,17 +204,18 @@
 # Starting with the same initial image, expand the universe according to these new 
 # rules, then find the length of the shortest path between every pair of galaxies. 
 # What is the sum of these lengths?
+# ----------------------------------------------------------------------------------------------
 
 file = open('input.txt', 'r')
 
+# Create lists of row characters to identify empty columns
 row_lists = []
-
 for row in file.readlines():
     row = row.rstrip("\n")
     row_lists.append(list(row))
 
 empty_cols = []
-
+# Check if character index is empty in all rows
 for i in range(len(row_lists[0])):
     flag = True
     for l in row_lists:
@@ -229,15 +231,18 @@ current = 1
 row_num = 1
 
 for row in file.readlines():
+    # initialize variable to account for expansion
     empty_space = 0
     row = row.rstrip("\n")
-    
+    # Assign coordinates for each node, storing them in dictionary with incremented keys
     for i, char in enumerate(list(row)):
         if char == '#':
             gal_dict[str(current)] = (row_num, i+1+empty_space)
             current += 1
         elif i in empty_cols:
+            # add expansion for empty columns, accounting for automatic +1 incrementor
             empty_space += 999999
+    # add expansion for empty rows
     if '#' not in row:
         row_num += 1000000
     else:
@@ -246,7 +251,8 @@ for row in file.readlines():
 dist_dict = {}
 
 for key, val in gal_dict.items():
-
+    # Calculate distance between each node, store them in new dictionary with
+    # dynamically joined key descriptors
     for other_key, other_val in gal_dict.items():
         temp = sorted([int(key), int(other_key)])
         temp = [str(i) for i in temp]
@@ -264,3 +270,19 @@ for key, val in gal_dict.items():
 print(sum(dist_dict.values()))
 
 # CORRECT ANSWER: 692506533832
+
+# COORDINATE TESTING SYSTEM
+
+# flag = 'y'
+# while flag == 'y':
+#     first_gal = input("Which Galaxy is your starting point? (1-440): ")
+#     second_gal = input("Which Galaxy is your end point? (1-440): ")
+#     if first_gal == second_gal:
+#         print("You haven't traveled anywhere, the distance is 0.")
+#     else:
+#         temp1 = sorted([int(first_gal), int(second_gal)])
+#         temp1 = [str(i) for i in temp1]
+#         label1 = " ".join(temp1)
+#         print(f'The distance between Galaxy {first_gal} {gal_dict[first_gal]} \
+#               and Galaxy {second_gal} {gal_dict[second_gal]} is {dist_dict[label1]}')
+#         flag = input("Would you like to pick again? (y/n): ")
