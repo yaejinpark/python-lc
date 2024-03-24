@@ -218,20 +218,21 @@
 
 # test_lst = ['rn=1','cm-','qp=3','cm=2','qp-','pc=4','ot=9','ab=5','pc-','pc=6','ot=7']
 
+# Create dictionary with 256 keys, each containing an empty list
 box_dict = {}
-
 for num in range(256):
     box_dict[num] = []
 
+# Iterate through the lines of the input file, adding each comma-separated value
+# to a new "str_lst" list.
 file = open('input.txt')
-
 str_lst = []
-
 for row in file.readlines():
     row = row.rstrip("\n")
     for i in row.split(","):
         str_lst.append(i)
 
+# Create a function to store the HASH algorithm
 def hash_encode(word):
     current_value = 0
     for letter in list(word):
@@ -239,24 +240,28 @@ def hash_encode(word):
     return current_value
 
 for i in str_lst:
+    # Check each value to see if its getting added (=) or removed (-) from the dictionary
     if '=' in i:
         lens, focal = i.split("=")[0], i.split("=")[1]
         flag = True
         for idx, val in enumerate(box_dict[hash_encode(lens)]):
+            # Check if lens already exists in target box, update if it is
             if val.split(" ")[0] == lens:
                 box_dict[hash_encode(lens)][idx] = " ".join(i.split("="))
                 flag = False
+        # If lens not found in box, add it
         if flag:
             box_dict[hash_encode(lens)] += [" ".join(i.split("="))]
 
     elif '-' in i:
+        # Remove lens from box if (-)
         lens = i.rstrip("-")
         for h in box_dict[hash_encode(lens)]:
             if lens == h.split(" ")[0]:
                 box_dict[hash_encode(lens)].remove(h)
 
+# Perform calculations on dictionary items
 total = 0        
-
 for key, val in box_dict.items():
     temp_total = 0
     if val:
@@ -265,3 +270,5 @@ for key, val in box_dict.items():
     total += temp_total
 
 print(total)
+
+# CORRECT ANSWER: 291774
