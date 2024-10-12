@@ -272,6 +272,8 @@ print(sum(dist_dict.values()))
 # CORRECT ANSWER: 692506533832
 
 # COORDINATE TESTING SYSTEM
+# I built the following testing battery to confirm the distance between 
+# two given nodes.
 
 # flag = 'y'
 # while flag == 'y':
